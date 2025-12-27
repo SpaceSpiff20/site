@@ -1,0 +1,63 @@
+Daniel Grossman
+Stanford, CA 94305
++1 (310) 650-9788
+danielgrossman@danielgrossman.net
+
+EDUCATION
+Stanford University, Stanford, CA
+GPA: 3.80 / 4.0
+BS in Symbolic Systems, Concentration in Artificial Intelligence
+Minor in Theater and Performing Arts, Expected June 2026
+MS in Computer Science, Concentration in Artificial Intelligence
+Expected June 2027
+
+Relevant Coursework:
+AI Principles; Continuous Mathematical Methods with an Emphasis on Machine Learning; Design and Analysis of Algorithms;
+Operating System Principles; Early Product Entrepreneurship; Multivariable Integral Calculus; Phonetics
+
+WORK EXPERIENCE
+Speechify, Los Angeles, CA
+Software Engineer Intern, API Growth
+July 2025 – September 2025
+- Produced a 17-page report with actionable proposals after running a 7-channel growth exploration.
+- Built and published demo web apps (Vite, React, TypeScript) and implemented no-code workflows in n8n.
+
+Fanatics Collectibles, Los Angeles, CA
+Software Engineer
+July 2024 – September 2024
+- Shipped 2,000+ lines of production Elixir code.
+- Ramped quickly to Phoenix LiveView, Ecto, PostgreSQL, HEEx templates, and changesets.
+
+SkinCall, Los Angeles, CA
+Cross-disciplinary Researcher and Developer
+June 2024 – July 2024
+- Created ML-ready dermatology classification algorithms.
+- Bridged dermatologists and computer vision specialists.
+
+BroxAI, Los Angeles, CA
+Software Engineer
+June 2023 – December 2023
+- Built proprietary LLM fine-tuning data pipelines.
+- Developed novel prompting techniques based on psychometrics.
+
+LEADERSHIP
+Ram’s Head Theatrical Society, Stanford, CA
+Director of Gaieties
+June 2025 – Present
+
+Alpha Epsilon Pi Fraternity, Stanford, CA
+President
+December 2023 – December 2024
+
+RESEARCH
+How to Make a Moral Agent, Stanford, CA
+Researcher and Author
+April 2025 – June 2025
+
+PROJECTS
+Convaux.com
+September 2025 – Present
+
+SKILLS
+Python, C, C++, TypeScript, Elixir, HTML, CSS, TensorFlow, PyTorch, Scikit-Learn
+Spanish (working proficiency)

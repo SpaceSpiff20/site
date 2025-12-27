@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Grossman | Contact</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Daniel Grossman</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="experiences.html">Work Experience</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2 class="section-title">Get In Touch</h2>
+
+        <div class="contact-container">
+            <!-- Contact Info Sidebar -->
+            <div class="contact-info-sidebar">
+                <p style="margin-bottom: 2rem; font-size: 1.25rem; color: #555;">
+                    I am always open to discussing new opportunities, collaborations, or simply connecting. Use the form
+                    to send me a direct message, and I'll get back to you as soon as possible.
+                </p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                    </div>
+
+                    <!-- Honeypot Field (Spam Protection) -->
+                    <div class="visually-hidden">
+                        <label for="honeypot">If you are human, leave this empty</label>
+                        <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="btn">
+                        <span id="btn-text">Send Message</span>
+                    </button>
+
+                    <div id="form-status"></div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const formStatus = document.getElementById('form-status');
+
+            // Record load time for timer check
+            const loadTime = Date.now();
+
+            // --- REPLACE THIS URL AFTER GOOGLE APPS SCRIPT DEPLOYMENT ---
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzjyzVBC1b_VN-AkJlUAIbo134gVUce0BbGPtXbHTQkvSPRQkzJNB76iUthi3V4uOEUaw/exec';
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // 1. Honeypot check
+                if (document.getElementById('honeypot').value !== "") {
+                    console.warn("Honeypot filled. Bot detected.");
+                    return; // Silently fail for bots
+                }
+
+                // 2. Timer check (Must take at least 3 seconds)
+                const submitTime = Date.now();
+                if (submitTime - loadTime < 3000) {
+                    formStatus.textContent = 'Please wait a moment before submitting.';
+                    formStatus.className = 'error';
+                    formStatus.style.display = 'block';
+                    return;
+                }
+
+                // Show loading state
+                submitBtn.disabled = true;
+                btnText.innerHTML = '<span class="loading-spinner"></span> Sending...';
+                formStatus.style.display = 'none';
+                formStatus.className = '';
+
+                const formData = new FormData(contactForm);
+                const data = {};
+                formData.forEach((value, key) => data[key] = value);
+
+                try {
+                    // We use no-cors if the script is simple, but for Google Apps Script 
+                    // a normal fetch usually works if the script handles CORS or uses JSONP pattern.
+                    // However, standard fetch with the published URL is the modern way.
+                    const response = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Google Apps Script requires no-cors for simple redirects
+                        cache: 'no-cache',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    // Since no-cors doesn't return a readable response, we assume success if no error is thrown
+                    formStatus.textContent = 'Message sent successfully! I will get back to you soon.';
+                    formStatus.classList.add('success');
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('Error:', error);
+                    formStatus.textContent = 'Oops! Something went wrong. Please try again or email me directly.';
+                    formStatus.classList.add('error');
+                    formStatus.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Send Message';
+                }
+            });
+        </script>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Daniel Grossman. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

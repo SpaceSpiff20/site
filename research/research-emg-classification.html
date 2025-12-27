@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Grossman | Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Daniel Grossman</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../experiences.html">Work Experience</a></li>
+                <li><a href="../research.html" class="active">Research</a></li>
+                <li><a href="../projects.html">Projects</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <a href="../research.html" class="btn" style="margin-bottom: 2rem; padding: 10px 20px; font-size: 0.8rem;">←
+            Back
+            to Research</a>
+
+        <article class="card" style="cursor: default; transform: none; box-shadow: none;">
+            <h2 class="section-title">"EMG Gesture Classification with Multinomial Logistic Regression and a Shallow
+                Neural
+                Network"</h2>
+            <div class="date-location">
+                <span>Researcher and Author</span>
+                <span>Stanford, CA</span>
+                <span>September 2025 – December 2025</span>
+            </div>
+
+            <div style="margin-top: 2rem; font-size: 1.05rem; line-height: 1.8; color: #444;">
+                <p style="margin-bottom: 1.5rem;">
+                    <strong>Abstract:</strong><br>
+                    This project investigates whether a relatively simple generalized linear model, multinomial logistic
+                    regression (softmax regression), can accurately classify hand and wrist gestures from low-cost
+                    surface electromyography (SEMG) using only four channels and lightweight time-domain features. The
+                    project targets six classes using signals acquired from Myoware EMG sensors. After explicitly
+                    trimming unstable gesture edges, softmax regression achieves about 92% test accuracy on real data,
+                    while a shallow MLP yields a modest improvement to around 93%. Most residual errors occur between
+                    fine finger gestures (point vs. pinch). These results suggest that classical linear models already
+                    perform strongly with carefully engineered features and segmentation, and small nonlinear models
+                    provide incremental but meaningful gains.
+                </p>
+
+                <p style="margin-bottom: 1.5rem;">
+                    <strong>Key Focus Areas:</strong>
+                </p>
+                <ul class="details" style="margin-left: 1rem; list-style-type: disc; padding-left: 1rem;">
+                    <li>Softmax Regression Performance: To determine how far a well-designed EMG pipeline with
+                        multinomial logistic regression could go for multi-class gesture recognition, the model achieved
+                        around 92% test accuracy on trimmed real EMG with 300 ms windows, with most errors confined to
+                        fine finger gestures (point vs. pinch).</li>
+
+                    <li>Shallow MLP Gain: Assessing whether modest nonlinearity provides additional gains, a shallow MLP
+                        improved test accuracy to around 93% on 200 ms windows, mainly by reducing confusions among
+                        overlapping multi-muscle gestures. The gain was only about 1-2 percentage points, indicating the
+                        feature space was already close to linearly separable.</li>
+
+                    <li>Feature Engineering and Segmentation: The study used simple time-domain features (MAV, RMS,
+                        Waveform Length) with four SEMG channels. A key challenge was mitigated by explicitly trimming
+                        unstable gesture edges, where only the central 40% of each contiguous gesture block was marked
+                        as "stable".</li>
+                </ul>
+
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                    <h3>Read the Paper</h3>
+                    <p>
+                        <a href="https://drive.google.com/file/d/1T-wXH1j7TP-4IpYnpMgrGik6KH5fx1bD/view?usp=sharing">View
+                            Report</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Daniel Grossman. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
