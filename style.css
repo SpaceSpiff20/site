@@ -1,9 +1,10 @@
 :root {
   --bg-color: #ffffff;
   --text-color: #333333;
-  --accent-color: #0056b3;
+  --text-card-color: #0056b3;
+  --accent-color: #80aad6;
   /* A professional blue */
-  --accent-hover: #004494;
+  --accent-hover: #bed4ed;
   --border-color: #e0e0e0;
   --header-font: 'Playfair Display', serif;
   --body-font: 'Inter', sans-serif;
@@ -135,7 +136,7 @@ main {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 40px;
+  width: 0px;
   height: 3px;
   background: var(--accent-color);
   border-radius: 2px;
@@ -172,7 +173,7 @@ h3 {
 
 .card:hover {
   transform: translateY(-5px);
-  background: #fff;
+  background: var(--accent-hover);
   border-color: rgba(0, 0, 0, 0.05);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
   /* Soft, deep shadow */
@@ -223,32 +224,23 @@ ul.details li strong {
 .monthly-update {
   font-family: var(--body-font);
   font-size: 1rem;
-  color: #1a1a1a;
+  color: #d1d1d1;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   padding-bottom: 0rem;
   display: inline-block;
   position: relative;
+  left: 25%;
 }
 
 .monthly-update::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
+  bottom: 2rem;
+  left: -15%;
+  width: 14rem;
   height: 0.15rem;
-  background: var(--accent-color);
-  border-radius: 2px;
-}
-
-.monthly-update:hover::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 400px;
-  height: 0.15rem;
-  background: var(--accent-color);
+  background: #d1d1d1;
   border-radius: 2px;
 }
 
