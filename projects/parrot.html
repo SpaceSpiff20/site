@@ -34,7 +34,7 @@
             to Projects</a>
 
         <article class="none" style="cursor: default; transform: none; box-shadow: none;">
-            <h2 class="section-title">Parrot [1586, 8150]</h2>
+            <h2 class="section-title"><i>Parrot [1586, 8150]</i></h2>
             <div class="date-location">
                 <span>Artist</span>
                 <span>Stanford, CA</span>
@@ -44,9 +44,77 @@
             <div style="margin-top: 2rem; font-size: 1.05rem; line-height: 1.8; color: #444;">
                 <p style="margin-bottom: 1.5rem;">
                     <strong>Overview:</strong><br>
-                    Parrot [1586, 8150] is an interactive installation combining projection mapping, 3D-modeling and
-                    printing, and p5.js as an exploration and commentary on human interaction with Large Language
+                    <i>Parrot [1586, 8150]</i> is an interactive installation combining <a
+                        href="https://derivative.ca/about-derivative">TouchDesigner</a> projection mapping, 3D-modeling
+                    and
+                    printing, and <a href="https://p5js.org/about/">p5.js</a> as an exploration and commentary on human
+                    interaction with Large Language
                     Models.
+                    </br>
+                    </br>
+                    The title <i> Parrot [1586, 8150] </i> itself is a repeat (like a parrot) "[1586, 8150]" being
+                    the token embedding numbers for
+                    "Parrot" for GPT-5 models. LLMs are trained to be aggreeable, and in many circumstances will just
+                    repeat back to you what you are saying, but just in a slightly different way. I wanted to explore an
+                    audio-visual experience that was a commentary on these types of interactions.
+                    </br>
+                    </br>
+                    <strong>How the Installation Works:</strong><br>
+                    Behind the scenes is a browser-based system that listens to visitors using speech to text, turns
+                    their speech into GPT tokens (using a tokenizer API), and then “parrots” those tokens back as a
+                    synthetic bird-call (using a p5.js sound library where I modify formant frequencies) and a graphing
+                    system of the tokens as nodes on a graph. This is then projection mapped onto the 3D printed
+                    bird using TouchDesigner's kantanMapper block.
+                <ol>
+                    <li>
+                        <strong>Listening & Transcription:</strong>
+                        </br>
+                        When a visitor “wakes” the parrot by speaking, the browser activates the microphone using the
+                        Web Speech API. The piece listens for a short utterance, transcribes it to text, and then passes
+                        that text into a local GPT tokenizer. Instead of sending anything to a server, the tokenization
+                        happens entirely in the browser via a preloaded GPT tokenizer model.
+                    </li>
+                    <li>
+                        <strong>Words to Tokens to Sound:</strong>
+                        </br>
+                        The transcribed sentence is converted into a sequence of integer tokens, the same kind of IDs
+                        large language models use. Each token is then mapped to an utterance of birdsong using a
+                        function
+                        called <code>tokenToParams</code> For each token, the code computes:
+                        <ul>
+                            <li>A base pitch range (around 300–1200 Hz)</li>
+                            <li>A duration and pitch slope, shaping how the sound glides over time</li>
+                            <li>Vibrato rate and depth for a trembling, bird-like quality</li>
+                            <li>Three moving “formants” (resonant filters) that approximate shifting vocal tract shapes
+                            </li>
+                        </ul>
+                        These parameters drive a custom “bird synth” built with the Web Audio API. Each string then
+                        becomes
+                        a short chirp where the sequence of tokens becomes a phrase of synthetic birdsong. It is a
+                        literal, sonic
+                        playback/parroting of the speech, in an audible form of the model’s semantic representation.
+                    </li>
+                    <li>
+                        <strong>Token Graph Visualization:</strong>
+                        </br>
+                        At the same time the sound is scheduled, each token also spawns a visual event in p5.js. Every
+                        token is mapped to a position in a circular layout using its numeric ID (magnitude and modulo
+                        arithmetic become radial distance and angle). On screen, each token appears as a glowing node
+                        with its token ID rendered nearby.
+                    </li>
+                    <li>
+                        <strong>Looping Interaction:</strong>
+                        </br>
+                        After it finishes playing back the full token sequence as sound, the system automatically
+                        returns to a listening state and waits for the next thing spoken to it.
+                    </li>
+                </ol>
+
+                </br>
+                <a href="https://drive.google.com/file/d/1URSAvqHoq7sH9PuQnBfjQYebgR67D7xj/view?usp=sharing">Watch
+                    the video</a>
+                </br>
+                <a href="https://editor.p5js.org/daniel26-citrine/sketches/uQG_8r2_k">p5.js code</a>
                 </p>
             </div>
         </article>
