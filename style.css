@@ -431,3 +431,34 @@ footer {
     font-size: 1.75rem;
   }
 }
+
+/* Under Construction Page Styling */
+.construction-hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.construction-icon {
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  width: 64px;
+  height: 64px;
+}
+
+.construction-title {
+  font-family: var(--header-font);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.preview-section {
+  background: #fdfdfd;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2.5rem;
+  margin-top: 2rem;
+  text-align: left;
+  box-shadow: var(--soft-shadow);
+}
